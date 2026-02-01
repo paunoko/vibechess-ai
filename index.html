@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VibeChess AI - Live Assistant</title>
+    <!-- OpenCV is loaded from local public folder -->
+    <script src="/opencv.js" async></script>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" />
+</head>
+
+<body>
+
+    <div class="header">
+        <h1><span class="material-symbols-rounded">chess</span> VibeChess AI Assistant</h1>
+    </div>
+
+    <div class="dashboard-container">
+        <!-- Top Row: Visuals -->
+        <div class="visuals-row">
+            <div class="panel video-panel">
+                <div class="panel-header">
+                    <span class="material-symbols-rounded">videocam</span> Kamera
+                </div>
+                <div class="video-wrapper">
+                    <video id="videoInput" width="640" height="480" autoplay playsinline></video>
+                    <canvas id="overlayCanvas" width="640" height="480"></canvas>
+                </div>
+            </div>
+
+            <div class="panel board-panel">
+                <div class="panel-header">
+                    <span class="material-symbols-rounded">grid_view</span> Virtuaalilauta
+                </div>
+                <!-- Turn Indicator -->
+                <div id="turn-indicator" class="turn-badge">
+                    <span id="turn-icon" class="material-symbols-rounded">circle</span>
+                    <span id="turn-text">Vuoro: Valkoinen</span>
+                </div>
+
+                <div class="board-wrapper">
+                    <div id="board-container"></div>
+                </div>
+
+                <div class="eval-section">
+                    <div id="evaluation">Arvio: 0.00</div>
+                    <div id="eval-bar">
+                        <div id="eval-fill"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Row: Controls -->
+        <div class="controls-row">
+            <div class="panel unified-bottom-panel">
+
+                <!-- Section 1: Controls -->
+                <div class="control-section">
+                    <div class="panel-header-small">
+                        <span class="material-symbols-rounded">joystick</span> Ohjaus
+                    </div>
+                    <div class="button-group">
+                        <button id="btn-capture" class="btn primary">1. Kalibroi</button>
+                        <button id="btn-lock" class="btn secondary">2. Lukitse</button>
+                        <button id="btn-reset" class="btn danger">Nollaa</button>
+                    </div>
+                    <div class="slider-group">
+                        <label>Herkkyys: <span id="sensValue">80</span></label>
+                        <input type="range" id="sensitivitySlider" min="10" max="500" value="80">
+                    </div>
+                </div>
+
+                <!-- Divider -->
+                <div class="vertical-divider"></div>
+
+                <!-- Section 2: Status -->
+                <div class="status-section-container">
+                    <div class="panel-header-small">
+                        <span class="material-symbols-rounded">info</span> Tila
+                    </div>
+                    <div id="statusLabel" class="status-box status-waiting">
+                        <span class="material-symbols-rounded">hourglass_empty</span> Ladataan...
+                    </div>
+                </div>
+
+                <!-- Divider -->
+                <div class="vertical-divider"></div>
+
+                <!-- Section 3: History -->
+                <div class="history-section-container">
+                    <div class="panel-header-small">
+                        <span class="material-symbols-rounded">history</span> Historia
+                    </div>
+                    <div id="moveLog" class="move-log">Odotetaan peliä...</div>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="toast-container"></div>
+        <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>
