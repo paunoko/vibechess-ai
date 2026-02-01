@@ -15,6 +15,9 @@
 
     <div class="header">
         <h1><span class="material-symbols-rounded">chess</span> VibeChess AI Assistant</h1>
+        <button id="btn-help" class="icon-btn" title="Ohjeet">
+            <span class="material-symbols-rounded">help</span>
+        </button>
     </div>
 
     <div class="dashboard-container">
@@ -101,6 +104,35 @@
         </div>
 
         <div id="toast-container"></div>
+
+        <!-- Help Modal -->
+        <div id="helpModal" class="modal-overlay hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Käyttöohjeet</h2>
+                    <button id="btn-close-help" class="icon-btn-small">
+                        <span class="material-symbols-rounded">close</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>1. Kalibrointi</strong></p>
+                    <ul>
+                        <li>Varmista että kamera näkee koko laudan.</li>
+                        <li>Paina <strong>Kalibroi</strong>.</li>
+                        <li>Klikkaa videokuvasta laudan 4 kulmaa järjestyksessä: <br>
+                            <em>Vasen Ylä → Oikea Ylä → Oikea Ala → Vasen Ala</em>.
+                        </li>
+                    </ul>
+                    <p><strong>2. Pelaaminen</strong></p>
+                    <ul>
+                        <li>Paina <strong>Lukitse</strong> kun kulmat on valittu.</li>
+                        <li>Tee siirrot laudalla. Tekoäly tunnistaa ne automaattisesti.</li>
+                        <li>Jos siirto menee väärin, voit korjata sen raahaamalla nappuloita virtuaalilaudalla.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
         <script type="module" src="/src/main.ts"></script>
 </body>
 

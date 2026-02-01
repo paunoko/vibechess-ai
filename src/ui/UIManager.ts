@@ -9,6 +9,34 @@ export class UIManager {
     constructor() {
         this.canvas = document.getElementById('overlayCanvas') as HTMLCanvasElement;
         this.toastManager = new ToastManager();
+        this.initHelpModal();
+    }
+
+    private initHelpModal(): void {
+        const btnHelp = document.getElementById('btn-help');
+        const btnClose = document.getElementById('btn-close-help');
+        const modal = document.getElementById('helpModal');
+
+        if (btnHelp && modal) {
+            btnHelp.addEventListener('click', () => {
+                modal.classList.remove('hidden');
+            });
+        }
+
+        if (btnClose && modal) {
+            btnClose.addEventListener('click', () => {
+                modal.classList.add('hidden');
+            });
+        }
+
+        // Close when clicking outside
+        if (modal) {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.add('hidden');
+                }
+            });
+        }
     }
 
     updateStatus(msg: string, type: 'ready' | 'waiting' | 'error' = 'ready'): void {
