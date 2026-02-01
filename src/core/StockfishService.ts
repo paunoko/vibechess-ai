@@ -11,7 +11,7 @@ export class StockfishService {
         this.onBestMove = onBestMove;
     }
 
-    init(workerPath: string = '/stockfish.js'): void {
+    init(workerPath: string = 'stockfish.js'): void {
         this.worker = new Worker(workerPath);
         this.worker.onmessage = (event) => {
             const msg = event.data;
